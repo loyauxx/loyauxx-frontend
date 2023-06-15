@@ -13,6 +13,7 @@ import { brandColor, darkColor } from "@/constants/design";
 import Navbar from "@/components/Navbar";
 import { useEffect, useRef, useState } from "react";
 import AnimateOnVisible from "@/components/AnimateOnVisible";
+import { Link } from "@chakra-ui/next-js";
 
 export default function Home() {
   return (
@@ -23,95 +24,78 @@ export default function Home() {
           name="description"
           content="Welcome to Loyauxx, where music meets discovery."
         />
-        <meta name="viewport" content="width=device, initial-scale=2" />
+        <meta name="viewport" content="width=device, initial-scale=1" />
         <link rel="icon" href="/logo-graphics.png" />
       </Head>
       <Box pos="relative" bg={darkColor} color="white">
         <Image
           src={"/index-background.webp"}
+          opacity={[0.5, 0.9]}
           w="full"
           h="90vh"
           objectFit={"cover"}
         />
+
         <Box
-          pos="absolute"
-          top="8%"
+          pos={"absolute"}
+          top={["3%","7%"]}
+          // pt={["24", ""]}
           role="group"
           zIndex={9999}
-          left="10"
-          w="50%"
+          left={["3","10"]}
+          w={["90%","50%"]}
         >
-          <Text color={brandColor} fontSize={"4xl"}>
+          <AnimateOnVisible>
+          <Text color={brandColor} fontSize={["4xl","4xl"]}>
             Welcome to Loyauxx, where music meets discovery.{" "}
           </Text>
-          <Text mt="2">
+          </AnimateOnVisible>
+          <AnimateOnVisible position={1}>
+
+          <Text mt="2" fontSize={"lg"} opacity={0.8}>
             Explore a world of music and uncover new sounds at Loyauxx.
           </Text>
+          </AnimateOnVisible>
+          <AnimateOnVisible position={2}>
+
           <Button
             bg={brandColor[200]}
             _groupHover={{ shadow: "xl" }}
             _active={{}}
+            as={Link}
+            href="/signup"
             color="white"
             _hover={{}}
+            size={"md"}
             rounded={"lg"}
-            mt="5"
+            mt={"5"}
             variant={"solid"}
             fontWeight={"medium"}
-          >
+            >
             Get In &rarr;
           </Button>
+            </AnimateOnVisible>
         </Box>
 
-        {/* <Flex
-          flexDir={"column"}
-          justify={"center"}
-          w="full"
-          mt='10'
-          alignItems={"center"}
-          py="20"
-          px="40"
-          textAlign={"center"}
-        >
-          <AnimateOnVisible >
-            <Text fontSize="4xl">Enter Our Contests and Get Discovered</Text>
-          </AnimateOnVisible>
-          <AnimateOnVisible position={1}>
-            <Text fontSize="lg" color="whiteAlpha.600" mt="5">
-              Join our competitions and contests to have opportunity to showcase
-              your musical prowess to the world. Enter our vibrant community and
-              unleash your potential
-            </Text>
-          </AnimateOnVisible>
-          <AnimateOnVisible position={2}>
-            <Box mt='10'>
-              <Box as="video" 
-              w='90vh'
-              playsInline
-              controls 
-              >
-                <source src="/video/sample.mp4" type="video/mp4"></source>
-              </Box>
-            </Box>
-          </AnimateOnVisible>
-        </Flex> */}
         <AnimateOnVisible>
           <Text fontSize={"3xl"} textAlign={"center"} mt="20">
             What we offer?
           </Text>
         </AnimateOnVisible>
-        <Flex justify={"center"} py="20" align={"center"}>
+        <Flex justify={"center"} flexDir={["column", 'row']} py="20" align={"center"}>
           <Box>
             <AnimateOnVisible>
               <Image
                 css={{ filter: "grayscale(100%)" }}
                 rounded="xl"
                 src="/what-we-offer.webp"
-                height="500"
+                height={["300", "500"]}
                 width="350"
+
               />
             </AnimateOnVisible>
           </Box>
-          <Flex gap="10" flexDir={"column"} ml="10">
+          <Flex gap="10" mt={["5", ""]} flexDir={"column"} ml="10">
             <Box w="80%">
               <AnimateOnVisible>
                 <Text fontSize={"xl"} pb="4">
@@ -151,10 +135,10 @@ export default function Home() {
           </Flex>
         </Flex>
         <Flex bg="black" flexDir={"column"}>
-          <Text textAlign={"center"} w="full" my="10" fontSize={"3xl"}>
+          <Text textAlign={"center"} w={"full"} my="10" fontSize={"3xl"}>
             BRANDS WE'VE COLLABORATED WITH.
           </Text>
-          <Flex alignItems={"center"} justify="center" gap="10">
+          <Flex ml={['5','']} alignItems={"center"} w='full' justify="center" gap="10">
             <Flex
               justify={"center"}
               alignItems={"center"}
@@ -184,7 +168,7 @@ export default function Home() {
             </Flex>
             <Flex></Flex>
           </Flex>
-          <Flex justify={"center"} gap="10" mx="10" my="20">
+          <Flex flexDir={["column", "row"]} justify={"center"} gap="10" mx="10" my="20">
             {[
               {
                 image: "/person1.jpg",
@@ -221,7 +205,7 @@ export default function Home() {
                 Frequently Asked Questions
               </Text>
             </AnimateOnVisible>
-            <Flex gap="10">
+            <Flex flexDir={["column", "row"]} gap="10">
               {[
                 {
                   ques: "How can I participate in the music competitions on Loyauxx?",
@@ -241,10 +225,10 @@ export default function Home() {
               ].map(({ ques, answer }) => (
                 <AnimateOnVisible>
                   <Box flex="1">
-                    <Text fontWeight={""} fontSize={"lg"} mb="4">
+                    <Text fontWeight={"semibold"} fontSize={"lg"} mb="4">
                       {ques}
                     </Text>
-                    <Text>{answer}</Text>
+                    <Text opacity={0.7}>{answer}</Text>
                   </Box>
                 </AnimateOnVisible>
               ))}
